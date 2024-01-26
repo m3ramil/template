@@ -1,6 +1,7 @@
 // Plugin Imports
 const pluginDirectoryOutput = require("@11ty/eleventy-plugin-directory-output");
 const pluginEleventyNavigation = require("@11ty/eleventy-navigation");
+<<<<<<< HEAD
 const pluginSitemap = require("@quasibit/eleventy-plugin-sitemap");
 const pluginMinifier = require("@sherby/eleventy-plugin-files-minifier");
 const pluginCritical = require("eleventy-critical-css");
@@ -14,6 +15,11 @@ const configCss = require("./src/config/eleventy/css");
 const configJs = require("./src/config/eleventy/javascript");
 
 const isProduction = process.env.ELEVENTY_ENV === "PROD";
+=======
+
+// Filter Imports
+const filterFormatDate = require("./src/config/filters/formatDate");
+>>>>>>> origin/cms
 
 module.exports = function (eleventyConfig) {
     /**
@@ -30,6 +36,7 @@ module.exports = function (eleventyConfig) {
     // https://www.11ty.dev/docs/plugins/navigation/
     eleventyConfig.addPlugin(pluginEleventyNavigation);
 
+<<<<<<< HEAD
     // Automatically generates a sitemap based on the HTML files being generated
     // https://github.com/quasibit/eleventy-plugin-sitemap
     eleventyConfig.addPlugin(pluginSitemap, configSitemap);
@@ -49,11 +56,14 @@ module.exports = function (eleventyConfig) {
         eleventyConfig.addPlugin(pluginCritical, configCritical);
     }
 
+=======
+>>>>>>> origin/cms
     /**
      *  PASSTHROUGH'S
      *      Copy/paste non-template files straight to /public, without any interference from the eleventy engine
      *      https://www.11ty.dev/docs/copy/
      */
+<<<<<<< HEAD
     eleventyConfig.addPassthroughCopy("./src/assets/css"); // CS-TODO - For optimization branch, remove CSS passthrough
     eleventyConfig.addPassthroughCopy("./src/assets/favicons");
     eleventyConfig.addPassthroughCopy("./src/assets/fonts");
@@ -73,12 +83,27 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addTemplateFormats("js");
     eleventyConfig.addExtension("js", configJs);
 
+=======
+>>>>>>> origin/cms
     eleventyConfig.addPassthroughCopy("./src/assets/css");
     eleventyConfig.addPassthroughCopy("./src/assets/favicons");
     eleventyConfig.addPassthroughCopy("./src/assets/fonts");
     eleventyConfig.addPassthroughCopy("./src/assets/images");
     eleventyConfig.addPassthroughCopy("./src/assets/js");
     eleventyConfig.addPassthroughCopy("./src/assets/svgs");
+<<<<<<< HEAD
+=======
+    eleventyConfig.addPassthroughCopy("./src/admin");
+
+    /**
+     *  FILTERS
+     *      Allows modification of data before it is outputted, denoted by {{ contentToPrint | filterName }}
+     *          https://www.11ty.dev/docs/filters/
+     */
+
+    // Turns a date from ISO format to a more human-readable one
+    eleventyConfig.addFilter("formatDate", filterFormatDate);
+>>>>>>> origin/cms
 
     return {
         dir: {
